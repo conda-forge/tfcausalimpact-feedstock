@@ -1,5 +1,5 @@
 {% set name = "tfcausalimpact" %}
-{% set version = "0.0.14" %}
+{% set version = "0.0.15" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/tfcausalimpact-{{ version }}.tar.gz
-  sha256: e71ef731685d3962424da00e1cc057ef69f560d01e3073215806cbdb9bc928ef
+  sha256: bcc21c3c48b59f329c02c8d94b87a8802e22e54da86c855500e1bf3b65529f38
 
 build:
   noarch: python
@@ -23,10 +23,13 @@ requirements:
   run:
     - python >=3.0,<3.12
     - jinja2
-    - pandas >=1.3.5
+    - pandas >=1.3.5,<=2.2
     - tensorflow >=2.10
-    - tensorflow-probability >=0.18
+    - tensorflow-probability >=0.18,<=0.24
     - matplotlib-base
+
+    # tensorflow-probaility[tf]
+    - tf-keras >=2.10
 
 test:
   imports:
